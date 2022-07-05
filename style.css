@@ -1,11 +1,60 @@
-.gallery {
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    background: linear-gradient(to top, rgb(132, 136, 132), rgb(137, 148, 153));
+}
+
+.gallery .polygon {
     --s: 150px;
     --g: 10px;
     display: grid;
     margin: calc(var(--s) + var(--g));
+    place-content: center;
 }
 
-.gallery > img {
-    cursor: pointer;
+.gallery .polygon img:nth-child(1) {
+    --_pol_y: calc(-100% - var(--g))
+}
+
+.gallery .polygon img:nth-child(7) {
+    --_pol_y: calc( 100% + var(--g))
+}
+
+.gallery .polygon img:nth-child(3),
+.gallery .polygon img:nth-child(5) {
+    --_pol_x: calc(-75% - .87*var(--g))
+}
+
+.gallery .polygon img:nth-child(4),
+.gallery .polygon img:nth-child(6) {
+    --_pol_x: calc( 75% + .87*var(--g))
+}
+
+.gallery .polygon img:nth-child(3),
+.gallery .polygon img:nth-child(4) {
+    --_pol_y: calc(-50% - .5*var(--g))
+}
+
+.gallery .polygon img:nth-child(5), 
+.gallery .polygon img:nth-child(6) {
+    --_pol_y: calc( 50% + .5*var(--g))
+}
+
+.gallery .polygon img {
+    grid-area: 1/1;
     width: var(--s);
+    aspect-ratio: 1.15;
+    object-fit: cover;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%,75% 100%,25% 100%,0 50%);
+    transform: translate(var(--_pol_x,0),var(--_pol_y,0)) scale(var(--_t,1));
+    cursor: pointer;
+    filter: grayscale(80%);
+    transition: .2s linear;
+}
+
+.gallery .polygon img:hover {
+    filter: grayscale(0);
+    z-index: 1;
+    --_t: 1.2;
 }
