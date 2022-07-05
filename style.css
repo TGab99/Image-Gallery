@@ -7,4 +7,5 @@
 
 .gallery > img {
     cursor: pointer;
+    width: var(--s);
 }
