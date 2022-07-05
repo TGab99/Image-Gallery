@@ -1,0 +1,6 @@
+.gallery {
+    --s: 150px;
+    --g: 10px;
+    display: grid;
+    margin: calc(var(--s) + var(--g));
+}
