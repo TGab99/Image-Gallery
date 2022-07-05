@@ -4,3 +4,7 @@
     display: grid;
     margin: calc(var(--s) + var(--g));
 }
+
+.gallery > img {
+    cursor: pointer;
+}
